@@ -1,0 +1,46 @@
+#btn1,#btn2,#btn3,#btn4,#btn5,#btn6{
+  display:inline-block;
+  background-color: black;
+  font-size: 20;
+  color:white;
+}
+.cell2H{
+  display:inline-block;
+  width:18%;
+  font-size: 18px;
+  text-align:center;
+  background-color:blue;
+  color:white;
+}
+.cell3H{
+  display:inline-block;
+  width:15%;
+  font-size: 18px;
+  text-align:center;
+  background-color:blue;
+  color:white;
+}
+.cell{
+  display:inline-block;
+  width:18%;
+  font-size: 18px;
+  text-align:center;
+  background-color:lightgreen;
+  color:black;
+}
+.cell12{
+  display:inline-block;
+  width:15%;
+  font-size: 18px;
+  text-align:center;
+  background-color:lightgreen;
+  color:black;
+}
+.cell1{
+  display:inline-block;
+  width:18%;
+  font-size: 18px;
+  text-align:center;
+  background-color:‎#FF7F7F;
+  color:black;
+}
