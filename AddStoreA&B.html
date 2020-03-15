@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+	<style type="text/css">
+.btn{
+	display: inline-block;
+	width:24%;
+	text-align:center;
+	background-color:lightgrey;
+	margin:1px;
+}
+.cell1{
+	display: inline-block;
+	width:24%;
+	text-align:center;
+	background-color:lightgrey;
+	margin:1px;
+}
+/*.cell22{
+	display: inline-block;
+	width:24%;
+	text-align:center;
+	background-color:red;
+	margin:1px;
+}*/
+.header{
+	display: inline-block;
+	width:24%;
+	color:white;
+	text-align:center;
+	background-color:black;
+	margin:1px;
+}
+</style>
+</head>
+<body>
+	Name :<input type="text" id="nm" placeholder="XYZ">
+	Price:<input type="text" id="pr" placeholder="$99">
+	Quantity:<input type="text" id="qn" placeholder="Quantity">
+	Store:<input type="text" id="store" placeholder="A or B">
+	<button onclick="add()">Product</button>
+	<div id="tab1"></div>
+	<div id="tab2"></div>
+</body>
+<script type="text/javascript">
+	let storeA=[];
+	let storeB=[];
+	function add(){
+		let NM=document.getElementById("nm").value;
+		let PR=parseInt(document.getElementById("pr").value);
+		let QN=parseInt(document.getElementById("qn").value);
+		let St=document.getElementById("store").value;
+		let st={"name":NM,"price":PR,"quantity":QN};
+		if(NM.length>5){
+			alert("Name of Product should be less than 5 character");
+		}
+		else if(PR<0){
+			alert("Price Should be Natural Number");
+		}
+		else if(QN<0){
+			alert("Price Should be Natural Number");
+		}
+		else if(St!="A" && St!="B"){
+            alert("Here only A Or B Store Available");
+		}
+		else if(St=="A"){
+        storeA.push(st);        
+		}
+		else if(St=="B"){
+        storeB.push(st);        
+		}  
+		console.log(storeA,storeB);
+        show();
+    }
+	
+	function show(){
+           let str="store A";
+		   str+="<div><div class='header' >Name</div>";
+		    str=str+"<div class='header'>Price</div>"
+		    str=str+"<div class='header'>Quantity</div>"
+			str=str+"<div class='header'>Sell</div></div>";
+			for(let i=0;i<storeA.length;i++){
+				let s=storeA[i];
+				// if(detailIn==index){
+			let name1="<div class='cell1'>"+s.name+"</div>";
+               let pr1="<div class='cell1'>"+s.price+"</div>";
+                let qn1="<div class='cell1'>"+s.quantity+"</div>";
+                let btn1="<button style='width:100px;text-align:center;' onclick=sellA("+i+")>sell</button>";
+                let row="<div>"+name1+pr1+qn1+btn1+"</div>";
+                str=str+row;
+        }
+            let str1="store B";
+		   str1+="<div><div class='header' >Name</div>";
+		    str1+="<div class='header'>Price</div>"
+		    str1+="<div class='header'>Quantity</div>"
+			str1+="<div class='header'>Sell</div></div>";
+			for(let i=0;i<storeB.length;i++){
+				let s=storeB[i];
+			
+			let name11="<div class='cell1'>"+s.name+"</div>";
+               let pr11="<div class='cell1'>"+s.price+"</div>";
+                let qn11="<div class='cell1'>"+s.quantity+"</div>";
+                let btn11="<button style='float:center;text-align:center;width:100px;' onclick=sellB("+i+")>sell</button>";
+                let row1="<div>"+name11+pr11+qn11+btn11+"</div>";
+                str1=str1+row1;
+            }
+	var ele=document.getElementById("tab1");
+	ele.innerHTML=str;
+	var ele=document.getElementById("tab2");
+	ele.innerHTML=str1;
+}
+
+function sellA(i){
+	let t=storeA[i];
+	t.quantity-=1;
+	if(t.quantity==0)
+		storeA.splice(i,1);
+    show()
+   }
+   function sellB(i){
+	let t=storeB[i];
+	t.quantity-=1;
+	if(t.quantity==0)
+		storeB.splice(i,1);
+    show()
+   }
+	
+</script>
+</html>
