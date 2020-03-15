@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+  Name:<input type="text" id="t" placeholder="Name"></br>
+  Maths:<input type="text" id="t1" placeholder="xx"></br>
+  English:<input type="text" id="t2" placeholder="xx"></br>
+  Computers:<input type="text" id="t3" placeholder="xx"></br>
+ <button id="btn" onclick="add()">Add Student</button>
+ <div id="studentsList"></div>
+  </body>
+ <script type="text/javascript">
+
+
+  	var s1={"name":"Jack","mat":81,"eng":85,"com":66};
+  	var s2={"name":"Bob","mat":39,"eng":54,"com":37};
+  	var s3={"name":"Tim","mat":77,"eng":80,"com":76};
+  	var s4={"name":"Sam","mat":48,"eng":22,"com":41};
+    var s5={"name":"Mary","mat":89,"eng":73,"com":59};
+  	let students=[s1,s2,s3,s4,s5];
+  	show();
+   function add(){
+   	    var f=0;
+    	var name1=document.getElementById("t");
+      var maths1=document.getElementById("t1");
+    	var english1=document.getElementById("t2");
+      var computer1=document.getElementById("t3");
+    	let Newstud={"name":name1.value,"mat":maths1.value,"eng":english1.value,"com":computer1.value};
+
+      if (name1.value == "" || maths1.value=="" || english1.value=="" || computer1.value=="") {
+    alert("Fill it properly");
+        return false;
+    }
+    else{
+      if(maths1.value>=0 && maths1.value<=100 || english1.value>=0 && english1.value<=100||computer1.value>=0 && computer1.value<=100){
+
+    	let len=students.length;
+    	for(let i=0; i<len;i++){
+          let st=students[i];
+          if(st.name==Newstud.name){
+             f++;
+             break;
+        }
+      }
+      if(f==0){
+    	students.push(Newstud);
+      } else{
+      	alert("Name already exist");
+      }}
+         else{
+          alert("Marks Must be integer");
+        }} 
+    show();
+   }
+   function remove(index){
+   	console.log("Remove index: ",index);
+   	students.splice(index,1);
+   	show();
+   }
+
+   function edit(index){
+   	var st=students[index];
+   	var nm1=document.getElementById("t");
+   	var ma1=document.getElementById("t1");
+    var en1=document.getElementById("t2");
+    var co1=document.getElementById("t3");
+    var btn=document.getElementById("btn");
+    nm1.value=st.name;
+    ma1.value=st.mat;
+    en1.value=st.eng;
+    co1.value=st.com;
+    btn.innerHTML="Update";
+    btn.setAttribute("onclick","editStud("+index+")");
+   }
+
+   function editStud(index){
+   	var nm1=document.getElementById("t");
+   	var ma1=document.getElementById("t1");
+    var en1=document.getElementById("t2");
+    var co1=document.getElementById("t3");
+    var Newstud={"name":nm1.value,"mat":ma1.value,"eng":en1.value,"com":co1.value};
+    students[index]=Newstud;
+    var btn=document.getElementById("btn");
+    btn.innerHTML="Add Student";
+    btn.setAttribute("onclick","add()");
+    if (nm1.value == "" || ma1.value=="" || en1.value=="" || co1.value=="") {
+    alert("Fill it properly");
+        return false;
+    }
+    else{
+    show();
+   }
+}
+    function show(){
+  		var len=students.length;
+  		var str="";
+      var str="<div><div class='header' >Name</div>";
+      str=str+"<div class='header' >Maths</div>";
+      str=str+"<div class='header' >English</div>";
+      str=str+"<div class='header' >Computer</div>";
+      str=str+"<div class='header1' >f</div>";
+      str=str+"<div class='header1' >f</div></div>";
+
+  		for(var i=0;i<len;i++){
+
+  			var st=students[i];
+  			var name1="<div class='cell'>"+st.name+"</div>";
+  			var mat1="<div class='cell'>"+st.mat+"</div>";
+        if(st.mat>=75){ 
+          mat1.className="green";
+        }
+  			var eng1="<div class='cell'>"+st.eng+"</div>";
+  			var com1="<div class='cell'>"+st.com+"</div>";
+  			var btn1="<div class='cell'><button class='bt' onclick=edit("+i+")>Edit</button></div>";
+  			var btn2="<div class='cell'><button class='bt' onclick=remove("+i+")>Remove</button></div>";
+  			var row="<div>"+name1+mat1+eng1+com1+btn1+btn2+"</div>";
+  			str=str+row;
+  		}
+  		var tab=document.getElementById("studentsList");
+  		tab.innerHTML=str;
+  	}
+  </script>
+</html>

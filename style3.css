@@ -1,0 +1,53 @@
+.header{
+	display: inline-block;
+	width:13.3%;
+	text-align:center;
+	color: white;
+	background-color:black;
+	border: 1px bold black;
+
+}
+.header1{
+	display: inline-block;
+	width:13.3%;
+	text-align:center;
+	color: black;
+	background-color:black;
+	border: 1px bold black;
+}
+.cell{
+	display:inline-block;
+	width:13%;
+	color: white;
+	text-align:center;
+	color:black;
+    border: 2px solid black;
+}
+/*.cell0{
+	display:inline-block;
+	width:13%;
+	color: white;
+	text-align:center;
+	color:black;
+    border: 2px solid black;
+    background-color: lightpink;
+}
+.cell1{
+	display:inline-block;
+	width:13%;
+	color: white;
+	text-align:center;
+	color:black;
+    border: 2px solid black;
+    background-color: lightgreen;
+}
+.cell2{
+	display:inline-block;
+	width:13%;
+	color: white;
+	text-align:center;
+	color:black;
+    border: 2px solid black;
+    background-color: green;
+}
+*/
