@@ -1,0 +1,40 @@
+.b1{
+	background-color: 	#AADD00;
+	color:white;
+	margin-right: 400px;
+	text-align: left;
+}
+.b1:hover{
+	border: bold;
+	border-color: #39E4CC;
+}
+.b2{
+	background-color:#DD00AA;
+	color:white;
+	margin-right: 400px;
+	text-align: left;
+}
+.b2:hover{
+	border: bold;
+	border-color: #39E4CC;
+}
+.t2{
+	background-color: #AAAAAA;
+	color: white;
+	text-align: left;
+	float:none;
+	margin-right: 400px;
+}
+.t{
+	color: black bold;
+	text-align: left;
+	margin-right: 400px;
+	font-weight: bold;
+	font-size: 30px;
+}
+.tx{
+	display: inline-block;
+	font-weight: bold;
+	/*float:left;*/
+	font-size: 20px;
+}

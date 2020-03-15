@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<div class="t" id="t1">Football Match</div>
+<div class="t" id="t1">Argentina vs Brazil</div>
+<div class="tx" id="txt1">0</div><div class="tx" id="txt">-</div><div class="tx" id="txt2">0</div></br>
+<div class="t2" id="txt3">Still waiting for the first goal</div>
+<button class="b1" onclick="Arg()">Argentina scores a goal </button></br>
+<button class="b2" onclick="Brazil()">Brazil scores a goal</button>
+</body>
+<script>
+    var n=0;
+    var m=0;
+function Arg(){
+    var ele=document.getElementById("txt1");
+    n++;
+    ele.innerHTML=n; 
+    out();    
+   }
+function Brazil(){
+    var ele=document.getElementById("txt2");
+    m++;
+    ele.innerHTML=m;
+    out();
+   }
+ </script>
+ <script type="text/javascript">
+     function out(){
+     var ele1=document.getElementById("txt3");   
+   if(m>n && (m-n)>=2){
+    ele1.innerHTML="Brazil is leading by "+(m-n)+" goals";
+    ele1.className="b2"
+   }else if(m>n){
+    ele1.innerHTML="Brazil is leading by 1 goal";
+    ele1.className="b2"
+   }
+   else if(m<n && (n-m)>=2){
+    ele1.innerHTML="Argentina is leading by "+(n-m)+" goals";
+    ele1.className="b1"
+   }
+   else if(m<n){
+    ele1.innerHTML="Argentina is leading by 1 goal" ;
+    ele1.className="b1"
+   }
+   else{
+    ele1.innerHTML="The scores are tied at "+n+"-"+m;
+    ele1.className="t2"
+   }
+}
+</script>
+</html>
