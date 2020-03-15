@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+	<style type="text/css">
+.cell2{
+	display: inline-block;
+	width:40%;
+	text-align:center;
+	background-color:lightgrey;
+	margin:1px;
+}
+.cell1{
+	display: inline-block;
+	width:40%;
+	text-align:center;
+	background-color:lightgreen;
+	margin:1px;
+}
+.cell3{
+	display: inline-block;
+	width:40%;
+	text-align:center;
+	background-color:red;
+	margin:1px;
+}
+.header{
+	display: inline-block;
+	width:40%;
+	color:white;
+	text-align:center;
+	background-color:black;
+	margin:1px;
+}
+	</style>
+</head>
+<body>
+	Name :<input type="text" id="txt"><br/>
+	Marks:<input type="text" id="txt2">
+	<button onclick="add()">Add</button><br/><br/>
+	Filter Marks:<input type="text" id="txt3">
+	<button onclick="filt()">Filter</button>
+	<div id="tab"></div>
+</body>
+<script type="text/javascript">
+	var register=[];
+	var filter;
+	function add(){
+		var nm=document.getElementById("txt").value;
+		var marks=parseInt(document.getElementById("txt2").value);
+		if(marks>=0 && marks<=100){
+		var stud={"name":nm,"marks":marks};
+		register.push(stud);
+		console.log(register);
+		document.getElementById("txt").value="";
+		document.getElementById("txt2").value="";
+		show();
+	}else{
+		alert("You Give wrong marks to "+nm);
+	}
+	}
+	function filt(){
+		var n1=parseInt(document.getElementById("txt3").value);
+		var filter=register.filter(s1=>s1.marks>n1);
+        showFilt(filter);
+
+	}
+	function showFilt(fi){
+		var s=fi.sort(compMark);
+		function compMark(s1,s2){
+			if(s1.marks>s2.marks)
+				return 1;
+			if(s1.marks==s2.marks)
+				return 0;
+			if(s1.marks<s2.marks)
+				return -1;
+		}
+		var str="<div><div class='header' >Name</div>";
+			str=str+"<div class='header'>Marks</div></div>";
+			for(var i=0;i<fi.length;i++){
+				var s=fi[i];
+				if(s.marks>60){
+				var name1="<div class='cell1'>"+s.name+"</div>";
+                var mark1="<div class='cell1'>"+s.marks+"</div>";
+                var row="<div>"+name1+mark1+"</div>";
+                str=str+row;
+            }
+            else if(40<=s.marks && s.marks<=60){
+            	var name1="<div class='cell2'>"+s.name+"</div>";
+                var mark1="<div class='cell2'>"+s.marks+"</div>";
+                var row="<div>"+name1+mark1+"</div>";
+                str=str+row;
+            }else if(s.marks<40){
+            	var name1="<div class='cell3'>"+s.name+"</div>";
+                var mark1="<div class='cell3'>"+s.marks+"</div>";
+                var row="<div>"+name1+mark1+"</div>";
+                str=str+row;
+            }
+			}
+	var ele=document.getElementById("tab");
+	ele.innerHTML=str;
+}
+
+
+	function show(){
+		var stud=register.sort(compMark);
+		function compMark(s1,s2){
+			if(s1.marks>s2.marks)
+				return 1;
+			if(s1.marks==s2.marks)
+				return 0;
+			if(s1.marks<s2.marks)
+				return -1;
+		}
+		console.log("students list:",stud);
+		var str="<div><div class='header' >Name</div>";
+			str=str+"<div class='header' >Marks</div></div>";
+			for(var i=0;i<stud.length;i++){
+				var s=stud[i];
+				if(s.marks>60){
+				var name1="<div class='cell1'>"+s.name+"</div>";
+                var mark1="<div class='cell1'>"+s.marks+"</div>";
+                var row="<div>"+name1+mark1+"</div>";
+                str=str+row;
+            }
+            else if(40<=s.marks && s.marks<=60){
+            	var name1="<div class='cell2'>"+s.name+"</div>";
+                var mark1="<div class='cell2'>"+s.marks+"</div>";
+                var row="<div>"+name1+mark1+"</div>";
+                str=str+row;
+            }else if(s.marks<40){
+            	var name1="<div class='cell3'>"+s.name+"</div>";
+                var mark1="<div class='cell3'>"+s.marks+"</div>";
+                var row="<div>"+name1+mark1+"</div>";
+                str=str+row;
+            }
+			}
+	var ele=document.getElementById("tab");
+	ele.innerHTML=str;
+}
+</script>
+</html>
