@@ -1,0 +1,27 @@
+.table{
+	border:2px solid black;
+	width: 100%;
+	padding: 5px;
+	text-align: center;
+	background-color: #E5E7E9;
+}
+.row2{
+	margin:5px;
+	background-color: #FADBD8 ;
+	width: 25%;
+	text-align: center;
+	color: black;
+}
+.row1{
+	margin:5px;
+	background-color: #D6ABEB ;
+	width: 24%;
+	text-align: center;
+	color: black;
+}
+.header{
+	background-color: black;
+	color: white;
+	font-weight: bold;
+
+}

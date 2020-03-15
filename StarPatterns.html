@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>Section B</title>
+	<link type="text/css" rel="stylesheet" href="style1.css"/>
+</head>
+<body>
+<div class="div1">
+</div>
+</body>
+<script>
+  var n=parseInt(prompt("enter the value"));
+   if(n>0){
+        document.write("<table class='table'>")
+            document.write("<tr class='header'>")
+                document.write("<td>Number</td>")
+                document.write("<td>A's</td>")
+                document.write("<td>B's</td>")
+                document.write("<td>AB's</td>")
+            document.write("</tr>")
+                document.write("<tr>")
+                var str="";
+                var str1="";
+                var str2="";
+                for (var i=1; i<=n; i++){
+                  if(i%2==0){
+                   str=str+"A";
+                   str1=str1+"B";
+                   str2=str2+"AB";
+                document.write("<td class='row2'>",i,"</td>")
+                document.write("<td class='row2'>",str,"</td>")
+                document.write("<td class='row2'>",str1,"</td>")
+                document.write("<td class='row2'>",str2,"</td>") 
+                document.write("</tr>")
+             }else{
+              str=str+"A";
+                   str1=str1+"B";
+                   str2=str2+"AB";
+                document.write("<td class='row1'>",i,"</td>")
+                document.write("<td class='row1'>",str,"</td>")
+                document.write("<td class='row1'>",str1,"</td>")
+                document.write("<td class='row1'>",str2,"</td>") 
+                document.write("</tr>")
+             }
+           }          
+
+        document.write("</table>")
+  }else{
+     document.write("Invalid number")
+  }
+</script>
+
+</html>
