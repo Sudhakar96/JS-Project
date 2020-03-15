@@ -1,0 +1,143 @@
+ <!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="styl1.css">
+</head>
+<body>
+  Product Name:<input type="text" id="t"></br>
+  Sale in 2015:<input type="text" id="t1"></br>
+  Sale in 2016:<input type="text" id="t2"></br>
+  sale in 2107:<input type="text" id="t3"></br>
+  sale in 2108:<input type="text" id="t4"></br>
+ <button id="btn" onclick="add()" >Add Product</button>
+ <div id="product"></div>
+  </body>
+ <script type="text/javascript">
+  	var p1={"name":"CK724R","s2015":77,"s2016":80,"s2017":76,"s2018":62};
+  	var p2={"name":"MX206N","s2015":81,"s2016":85,"s2017":66,"s2018":62};
+  	var p3={"name":"AH224T","s2015":89,"s2016":73,"s2017":59,"s2018":42};
+  	var p4={"name":"PB155D","s2015":39,"s2016":54,"s2017":37,"s2018":33};
+    var p5={"name":"BD110N","s2015":48,"s2016":22,"s2017":41,"s2018":45};
+  	let person=[p1,p2,p3,p4,p5];
+    let pr=[];
+  	show();
+    function add(){
+   	    var f=0;
+    	var n1=document.getElementById("t");
+      var y1=document.getElementById("t1");
+    	var y2=document.getElementById("t2");
+      var y3=document.getElementById("t3");
+      var y4=document.getElementById("t4");
+    	var prod={"name":n1.value,"s2015":y1.value,"s2016":y2.value,"s2017":y3.value,"s2018":y4.value};
+    	var len=person.length;
+    	for(var i=0; i<len;i++){
+          var pr=person[i];
+          if(pr.name==prod.name){
+             f++;
+             break;
+        }
+      }
+      if(f==0){
+    	person.push(prod);
+      } else{
+      	alert("Name already exist");
+      }
+    
+      show();
+   }
+   
+   function remove(index){
+   	person.splice(index,1);
+   	show();
+   }
+
+   function compTsale(s1,s2){
+    let sum1=s1.s2015+s1.s2016+s1.s2017+s1.s2018;
+    let sum2=s2.s2015+s2.s2016+s2.s2017+s2.s2018;
+    if(sum1>sum2)
+      return -1;
+    if(sum1==sum2)
+      return 0;
+    if(sum1<sum2)
+      return 1
+   }
+      function show(){
+         pr=person.sort(compTsale);
+  		var len=pr.length;
+  		var str="";
+      var str="<div><div class='header'>Rank</div>";
+      str=str+"<div class='header' >Name</div>";
+      str=str+"<div class='header' >2015</div>";
+      str=str+"<div class='header' >2016</div>";
+      str=str+"<div class='header' >2017</div>";
+      str=str+"<div class='header'>2018</div>";
+      str=str+"<div class='header1' >f</div></div>";
+
+  		for(let i=0;i<len;i++){
+  			let p=pr[i];
+        let srt=[p.s2015,p.s2016,p.s2017,p.s2018];
+        srt.sort();
+        console.log(srt);
+        let y1="";
+        let y2="";
+        let y3="";
+        let y4="";
+
+        let r1="<div class='cell'>"+(i+1)+"</div>";
+  			let name1="<div class='cell'>"+p.name+"</div>";
+        for(let j=0;j<4;j++){
+        if(srt[j]==p.s2015){
+          if(j==0){
+  			   y1="<div style='background-color:lightpink;' class='cell'>"+p.s2015+"</div>";}
+          if(j==1){
+           y1="<div style='background-color:lightgreen;' class='cell'>"+p.s2015+"</div>";}
+         if(j==2){
+           y1="<div style='background-color:lightgreen;' class='cell'>"+p.s2015+"</div>";}
+         if(j==3){
+            y1="<div style='background-color:green;' class='cell'>"+p.s2015+"</div>";
+         }
+      }
+      if(srt[j]==p.s2016){
+        if(j==0){
+           y2="<div style='background-color:lightpink;' class='cell'>"+p.s2016+"</div>";}
+          if(j==1){
+           y2="<div style='background-color:lightgreen;' class='cell'>"+p.s2016+"</div>";}
+         if(j==2){
+           y2="<div style='background-color:lightgreen;' class='cell'>"+p.s2016+"</div>";}
+         if(j==3){
+            y2="<div style='background-color:green;' class='cell'>"+p.s2016+"</div>";
+         }
+      }
+      if(srt[j]==p.s2017){
+
+  			if(j==0){
+           y3="<div style='background-color:lightpink;' class='cell'>"+p.s2017+"</div>";}
+          if(j==1){
+           y3="<div style='background-color:lightgreen;' class='cell'>"+p.s2017+"</div>";}
+         if(j==2){
+           y3="<div style='background-color:lightgreen;' class='cell'>"+p.s2017+"</div>";}
+         if(j==3){
+            y3="<div style='background-color:green;' class='cell'>"+p.s2017+"</div>";
+         }
+      }
+      if(srt[j]==p.s2018){
+        
+        if(j==0){
+           y4="<div style='background-color:lightpink;' class='cell'>"+p.s2018+"</div>";}
+          if(j==1){
+           y4="<div style='background-color:lightgreen;' class='cell'>"+p.s2018+"</div>";}
+         if(j==2){
+           y4="<div style='background-color:lightgreen;' class='cell'>"+p.s2018+"</div>";}
+         if(j==3){
+            y4="<div style='background-color:green;' class='cell'>"+p.s2018+"</div>";
+         }
+       }}
+  			let btn1="<div class='cell'><button class='bt' onclick=remove("+i+")>Remove</button></div>";
+  			let row="<div>"+r1+name1+y1+y2+y3+y4+btn1+"</div>";
+  			str=str+row;
+  		}
+  		var tab=document.getElementById("product");
+  		tab.innerHTML=str;
+  	}
+  </script>
+</html>
